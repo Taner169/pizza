@@ -18,7 +18,7 @@ You will need Python 3.6 or later installed on your machine. You will also need 
 ### Installing
 
 1. Clone the repository:
-git clone https://github.com/taner169/pizza.git
+https://github.com/Taner169/pizza
 
 2. Change into the project directory:
 cd pizza-order-app
