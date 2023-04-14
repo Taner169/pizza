@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Success - Delicious Pizza Restaurant</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Delicious Pizza Restaurant</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('menu') }}">Menu</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+                <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+                {% if session.get('logged_in') %}
+                    <li><a href="{{ url_for('create_order') }}">Create Order</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Order Successfully Placed!</h2>
+        <p>Thank you for your order, {{ order.name }}!</p>
+        <p>Order details:</p>
+        <ul>
+            <li>Email: {{ order.email }}</li>
+            <li>Pizza Type: {{ order.pizza_type }}</li>
+            <li>Pizza Size: {{ order.pizza_size }}</li>
+        </ul>
+    </main>
+    <footer>
+        <p>&copy; 2023 Delicious Pizza Restaurant. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Delicious Pizza Restaurant</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+	<header>
+		<h1>Delicious Pizza Restaurant</h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="menu">Menu</a></li>
+				<li><a href="about-us">About Us</a></li>
+				<li><a href="contact-us">Contact Us</a></li>
+				<li><a href="register">Register</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section class="login">
+			<h2>Login</h2>
+			{% if error %}
+			<div style="color: red;">
+				{{ error }}
+			</div>
+			{% endif %}
+			
+			<form aaction="{{ url_for('login') }}" method="POST">
+				<label for="username">Username:</label>
+				<input type="text" id="username" name="username" required><br><br>
+				<label for="password">Password:</label>
+				<input type="password" id="password" name="password" required><br><br>
+				<button type="submit" class="button button-primary">Login</button>
+			</form>
+            <br>
+            <form action="{{ url_for('employee.login') }}">
+				<button type="submit" class="button button-primary">Employee Login</button>
+			</form>
+		</section>
+	</main>
+	<footer>
+		<p>&copy; 2023 Delicious Pizza Restaurant. All rights reserved.</p>
+	</footer>
+</body>
+</html>

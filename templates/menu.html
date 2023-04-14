@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delicious Pizza Restaurant - Menu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Delicious Pizza Restaurant</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="menu">Menu</a></li>
+                <li><a href="about-us">About Us</a></li>
+                <li><a href="contact-us">Contact Us</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="create-order">Create Order</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                {% else %}
+                    <li><a href="/login">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+	<section>
+		<h2>Our Pizzas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Size</th>
+                    <th>Toppings</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pizza in pizzas %}
+                <tr>
+                    <td>{{ pizza.name }}</td>
+                    <td>{{ pizza.price }}</td>
+                    <td>{{ pizza.size }}</td>
+                    <td>{{ pizza.toppings }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+	</section>
+    <main>
+    </main>
+    <footer>
+        <p>&copy; 2023 Delicious Pizza Restaurant. All rights reserved.</p>
+    </footer>
+</body>
+</html>

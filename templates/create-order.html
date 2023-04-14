@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Order - Delicious Pizza Restaurant</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Delicious Pizza Restaurant</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="menu">Menu</a></li>
+                <li><a href="about-us">About Us</a></li>
+                <li><a href="contact-us">Contact Us</a></li>
+                {% if session.get('logged_in') %}
+                    <li><a href="create-order">Create Order</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                {% else %}
+                    <li><a href="/login">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Create Order</h2>
+        <form action="/create-order" method="post">
+            {{ form.csrf_token }}
+            <div>
+              <label for="name">Name:</label>
+              {{ form.name(id='name') }}
+            </div>
+            <div>
+              <label for="email">Email:</label>
+              {{ form.email(id='email') }}
+            </div>
+            <div>
+                <label for="pizza_type">Pizza Type:</label>
+                {{ form.pizza_type(id='pizza_type') }}
+            </div>
+            <div>
+                <label for="pizza_size">Pizza Size:</label>
+                {{ form.pizza_size(id='pizza_size') }}
+            </div>
+            <div>
+              {{ form.submit(value='Place Order') }}
+            </div>
+          </form>
+    </main>
+    <footer>
+        <p>&copy; 2023 Delicious Pizza Restaurant. All rights reserved.</p>
+    </footer>
+</body>
+</html>

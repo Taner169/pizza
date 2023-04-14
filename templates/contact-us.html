@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Delicious Pizza Restaurant - Contact Us</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+	<header>
+        <h1>Delicious Pizza Restaurant</h1>
+        <nav>
+            <ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="menu">Menu</a></li>
+				<li><a href="about-us">About Us</a></li>
+				<li><a href="contact-us">Contact Us</a></li>
+				{% if current_user.is_authenticated %}
+					<li><a href="create-order">Create Order</a></li>
+					<li><a href="/logout">Logout</a></li>
+				{% else %}
+					<li><a href="/login">Login</a></li>
+				{% endif %}
+			</ul>
+			
+        </nav>
+    </header>
+	<main>
+		<section class="contact-us">
+			<h2>Contact Us</h2>
+			{% if message %}
+			<div style="color: green;">
+				{{ message }}
+			</div>
+			{% endif %}
+			<form method="POST" action="/contact-us">
+				<label for="name">Name:</label>
+				<input type="text" id="name" name="name" required><br><br>
+				<label for="email">Email:</label>
+				<input type="email" id="email" name="email" required><br><br>
+				<label for="subject">Subject:</label>
+				<input type="text" id="subject" name="subject" required><br><br>
+				<label for="message">Message:</label>
+				<textarea id="message" name="message" required></textarea><br><br>
+				<input type="submit" value="Submit">
+			</form>
+		</section>
+	</main>
+	<footer>
+		<p>&copy; 2023 Delicious Pizza Restaurant. All rights reserved.</p>
+	</footer>
+</body>
+</html>
+

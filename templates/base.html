@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>You have been logged out.</h1>
+    <a href="{{ url_for('login') }}">Return to login page</a>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message[1] }}">{{ message[0] }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% if 'logged_in' in session %}
+      <form action="{{ url_for('logout') }}" method="POST">
+        <input type="submit" value="Logout">
+      </form>
+    {% else %}
+      <a href="{{ url_for('login') }}">Login</a>
+    {% endif %}
+{% endblock %}
+

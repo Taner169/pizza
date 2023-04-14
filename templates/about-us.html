@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Delicious Pizza Restaurant - About Us</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+	<header>
+        <h1>Delicious Pizza Restaurant</h1>
+        <nav>
+            <ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="menu">Menu</a></li>
+				<li><a href="about-us">About Us</a></li>
+				<li><a href="contact-us">Contact Us</a></li>
+				{% if current_user.is_authenticated %}
+					<li><a href="create-order">Create Order</a></li>
+					<li><a href="/logout">Logout</a></li>
+				{% else %}
+					<li><a href="/login">Login</a></li>
+				{% endif %}
+			</ul>
+			
+        </nav>
+    </header>
+	<main>
+		<section class="about-us">
+			<h2>About Us</h2>
+			<p>Delicious Pizza Restaurant is a family-owned and operated business that has been serving the community for over 20 years. We are passionate about creating delicious, high-quality pizzas that are made with fresh ingredients and traditional recipes.</p>
+			<p>Whether you're in the mood for a classic Margherita, a spicy Pepperoni, or a unique Seafood pizza, we've got you covered. We also offer a build-your-own option, so you can create the perfect pizza with your favorite toppings.</p>
+			<p>Visit us today and taste the difference that comes from using the best ingredients and traditional recipes. We look forward to serving you and your family soon!</p>
+		</section>
+	</main>
+	
+	<footer>
+		<p>&copy; 2023 Delicious Pizza Restaurant. All rights reserved.</p>
+	</footer>
+</body>
+</html>

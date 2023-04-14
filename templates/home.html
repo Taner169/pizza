@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delicious Pizza Restaurant</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Delicious Pizza Restaurant</h1>
+        <nav>
+            <ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="menu">Menu</a></li>
+				<li><a href="about-us">About Us</a></li>
+				<li><a href="contact-us">Contact Us</a></li>
+				{% if current_user.is_authenticated %}
+					<li><a href="create-order">Create Order</a></li>
+					<li><a href="/logout">Logout</a></li>
+				{% else %}
+					<li><a href="/login">Login</a></li>
+				{% endif %}
+			</ul>
+        </nav>
+    </header>
+    <main>
+        {% if current_user.is_authenticated %}
+        <h2>Welcome, {{ current_user.username }}!</h2>
+        {% else %}
+        <h2>Delicious Pizza Restaurant!</h2>
+        {% endif %}
+
+        <p>We serve a variety of delicious pizzas made with fresh ingredients.</p>
+        <p>Try one of our specialty pizzas or build your own with your favorite toppings.</p>
+    </main>
+    <footer>
+        <p>&copy; 2023 Delicious Pizza Restaurant. All rights reserved.</p>
+    </footer>
+</body>
+</html>
